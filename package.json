@@ -2,7 +2,6 @@
   "name": "exhibition-cost-calculator",
   "version": "1.0.0",
   "description": "AI-Powered Exhibition Cost Calculator with Vendor Management",
-  "type": "module",
   "license": "MIT",
   "scripts": {
     "dev": "cross-env NODE_ENV=development tsx server/index.ts",
