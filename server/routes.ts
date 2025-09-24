@@ -178,7 +178,7 @@ async function seedMockVendors() {
   }
 }
 
-export async function registerRoutes(app: Express): Promise<Server> {
+export async function registerRoutes(app: Express): Promise<Server | null> {
   // Auth middleware
   await setupAuth(app);
   
@@ -727,6 +727,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  const httpServer = createServer(app);
-  return httpServer;
+  // For Vercel serverless, we don't need to create a server
+  // Return null to indicate this is serverless
+  return null;
 }

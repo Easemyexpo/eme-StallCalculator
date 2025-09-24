@@ -1,7 +1,6 @@
 import 'dotenv/config';
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "../server/routes";
-import { setupVite, serveStatic, log } from "../server/vite";
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -30,15 +29,32 @@ app.use((req, res, next) => {
       if (capturedJsonResponse) {
         logLine += ` - ${JSON.stringify(capturedJsonResponse).substring(0, 100)}...`;
       }
-      log(logLine);
+      console.log(logLine);
     }
   });
 
   next();
 });
 
+// Simple health check endpoint
+app.get('/api/health', (req, res) => {
+  res.json({ 
+    status: 'ok', 
+    timestamp: new Date().toISOString(),
+    environment: process.env.NODE_ENV || 'development'
+  });
+});
+
 // Register all API routes
 registerRoutes(app);
+
+// Serve static files from client build
+app.use(express.static(path.join(__dirname, '../client/dist')));
+
+// Fallback to index.html for client-side routing
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+});
 
 // Error handling middleware
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
