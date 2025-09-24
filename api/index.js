@@ -643,13 +643,52 @@ app.post("/api/ai-chat", async (req, res) => {
   }
 });
 
-// Serve static files from client build
-app.use(express.static(path.join(__dirname, '../client/dist')));
+// Serve static files from client build (if it exists)
+const clientDistPath = path.join(__dirname, '../client/dist');
+const fs = require('fs');
 
-// Fallback to index.html for client-side routing
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
-});
+if (fs.existsSync(clientDistPath)) {
+  app.use(express.static(clientDistPath));
+  
+  // Fallback to index.html for client-side routing
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(clientDistPath, 'index.html'));
+  });
+} else {
+  // If client build doesn't exist, serve a simple message
+  app.get('*', (req, res) => {
+    res.send(`
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <title>Exhibition Cost Calculator</title>
+          <style>
+            body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
+            .container { max-width: 600px; margin: 0 auto; }
+            .status { color: #666; margin: 20px 0; }
+            .api-link { color: #0070f3; text-decoration: none; }
+          </style>
+        </head>
+        <body>
+          <div class="container">
+            <h1>🏢 Exhibition Cost Calculator</h1>
+            <p class="status">API is running successfully!</p>
+            <p>The React frontend is being built. Please wait a moment and refresh the page.</p>
+            <p>You can test the API endpoints:</p>
+            <ul style="text-align: left; display: inline-block;">
+              <li><a href="/api/health" class="api-link">/api/health</a> - Health check</li>
+              <li><a href="/api/market-data" class="api-link">/api/market-data</a> - Market data</li>
+              <li><a href="/api/smart-vendors?destinationCity=Mumbai&boothSize=20" class="api-link">/api/smart-vendors</a> - Smart vendors</li>
+            </ul>
+            <p style="margin-top: 30px; color: #999;">
+              If this page persists, the client build may need to be configured properly.
+            </p>
+          </div>
+        </body>
+      </html>
+    `);
+  });
+}
 
 // Error handling middleware
 app.use((err, req, res, next) => {
