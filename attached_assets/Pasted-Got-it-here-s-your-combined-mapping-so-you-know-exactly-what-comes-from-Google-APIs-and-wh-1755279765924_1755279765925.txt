@@ -1,0 +1,65 @@
+Got it — here’s your **combined mapping** so you know exactly what comes from **Google APIs** and what has to come from **external APIs** for your exhibitor cost platform.
+
+---
+
+## **1. Hotels — Info + Pricing**
+
+| **Function**                         | **Google API**                 | **Third-Party API**                                                 | **Notes**                                                              |
+| ------------------------------------ | ------------------------------ | ------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| Search hotels by city/lat-lng        | **Places API – Place Search**  | –                                                                   | Google returns hotel names, address, ratings, photos; no prices.       |
+| Get full hotel details               | **Places API – Place Details** | –                                                                   | Includes reviews, photos, phone, website.                              |
+| Real-time hotel rates & availability | –                              | **Amadeus Hotels API**, **Travelpayouts Hotels**, **Hotelbeds API** | Google doesn’t give live prices — you must use a travel data provider. |
+
+---
+
+## **2. Flights — Info + Pricing**
+
+| **Function**                  | **Google API**                          | **Third-Party API**                                                    | **Notes**                                               |
+| ----------------------------- | --------------------------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------- |
+| Flight prices, schedules      | –                                       | **Amadeus Flights API**, **Skyscanner API**, **Travelpayouts Flights** | Google has no public flight pricing API.                |
+| Airline/airport location info | **Places API – Place Search / Details** | –                                                                      | You can use Google for airport codes, names, locations. |
+| Distance between airports     | **Distance Matrix API**                 | –                                                                      | Gives travel time/distance; doesn’t show flights.       |
+
+---
+
+## **3. Logistics (Ground Shipping)**
+
+| **Function**                          | **Google API**                              | **Third-Party API**                      | **Notes**                                                                            |
+| ------------------------------------- | ------------------------------------------- | ---------------------------------------- | ------------------------------------------------------------------------------------ |
+| Calculate road travel time & distance | **Distance Matrix API**, **Directions API** | –                                        | Google handles multi-stop distance/time for trucks, cars, etc.                       |
+| Routing optimization                  | **Directions API**                          | –                                        | Google does basic route planning; for advanced optimization, use ORS or GraphHopper. |
+| Shipping rates                        | –                                           | **ShipEngine**, **EasyPost**, **Shippo** | Google does not calculate courier freight prices.                                    |
+| Shipment tracking                     | –                                           | **AfterShip**, **17TRACK**               | External APIs needed.                                                                |
+
+---
+
+## **4. Geospatial & Mapping Support**
+
+| **Function**                  | **Google API**                               | **Notes**                                       |
+| ----------------------------- | -------------------------------------------- | ----------------------------------------------- |
+| Geocoding (address ↔ lat/lng) | **Geocoding API**                            | Useful for hotel/vendor location mapping.       |
+| Place Autocomplete            | **Places API – Autocomplete**                | Speeds up user entry of addresses.              |
+| Static Maps / Dynamic Maps    | **Maps Static API**, **Maps JavaScript API** | Show venues, vendor locations, hotels visually. |
+
+---
+
+## **Suggested Stack for Your Platform**
+
+**Google Side (Info + Mapping)**
+
+* **Places API** (Search + Details) → Hotels, airports, vendor addresses, ratings
+* **Geocoding API** → Address → coordinates
+* **Distance Matrix API** → Driving distances/times for logistics
+* **Directions API** → Multi-stop routing
+
+**External Side (Pricing + Availability)**
+
+* **Flights:** Amadeus Flights API + Travelpayouts/Skyscanner
+* **Hotels:** Amadeus Hotels API + Hotelbeds API
+* **Shipping:** ShipEngine or EasyPost (rates/labels), AfterShip (tracking)
+
+---
+
+If you want, I can now **design an API orchestration flow** showing exactly **which call hits Google** and **which hits external providers** for your “Cost Per Sq. Ft.” calculator — so the backend merges them into one output for the exhibitor.
+
+Do you want me to build that flow diagram next?

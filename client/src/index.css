@@ -1,0 +1,1116 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* EaseMyExpo Metallic Green Theme - Based on Logo Colors */
+:root {
+  /* Metallic Green Color System from Logo */
+  --primary-green: #4ade80;        /* Bright metallic green from logo */
+  --secondary-green: #22d3ee;      /* Teal accent from logo */
+  --light-green: #86efac;          /* Light metallic green */
+  --dark-green: #059669;           /* Deep green shadows */
+  --emerald-green: #10b981;        /* Emerald metallic tone */
+  --mint-green: #6ee7b7;           /* Mint highlight */
+  --background-green: #ecfeff;     /* Very light teal background */
+  --surface-green: #f0fdfa;        /* Surface with hint of green */
+  --text-dark: #134e4a;            /* Dark teal text */
+  --text-secondary: #0f766e;       /* Medium teal text */
+
+  /* Metallic gradient colors */
+  --metallic-light: #67e8f9;       /* Light cyan from logo */
+  --metallic-mid: #4ade80;         /* Mid green from logo */
+  --metallic-dark: #059669;        /* Dark green from logo */
+}
+
+/* Green Theme Utilities */
+.green-primary { color: var(--primary-green); }
+.green-secondary { color: var(--secondary-green); }
+.green-light { color: var(--light-green); }
+.green-dark { color: var(--dark-green); }
+.green-text { color: var(--text-dark); }
+
+.green-bg-primary { background-color: var(--primary-green); }
+.green-bg-secondary { background-color: var(--secondary-green); }
+.green-bg-light { background-color: var(--background-green); }
+.green-bg-surface { background-color: var(--surface-green); }
+
+.green-border { border-color: var(--primary-green); }
+.green-gradient { background: linear-gradient(135deg, var(--metallic-light), var(--metallic-mid), var(--metallic-dark)); }
+.green-gradient-dark { background: linear-gradient(135deg, var(--secondary-green), var(--dark-green)); }
+.metallic-gradient { background: linear-gradient(135deg, var(--metallic-light) 0%, var(--primary-green) 50%, var(--dark-green) 100%); }
+.logo-metallic { background: linear-gradient(135deg, #67e8f9 0%, #4ade80 35%, #22d3ee 70%, #059669 100%); }
+
+/* Theme-specific body classes for advanced styling */
+body.mood-theme-energetic .btn-primary,
+body.mood-theme-energetic .bg-gradient-to-r {
+  background: linear-gradient(to right, var(--mood-primary), var(--mood-accent));
+}
+
+body.mood-theme-calm .btn-primary,
+body.mood-theme-calm .bg-gradient-to-r {
+  background: linear-gradient(to right, var(--mood-primary), var(--mood-accent));
+}
+
+body.mood-theme-creative .btn-primary,
+body.mood-theme-creative .bg-gradient-to-r {
+  background: linear-gradient(to right, var(--mood-primary), var(--mood-accent));
+}
+
+body.mood-theme-midnight {
+  background-color: var(--mood-background);
+  color: var(--mood-text);
+}
+
+body.mood-theme-midnight .card,
+body.mood-theme-midnight .bg-white {
+  background-color: var(--mood-surface);
+  color: var(--mood-text);
+}
+
+body.mood-theme-passion {
+  background: linear-gradient(135deg, var(--mood-background), var(--mood-surface));
+}
+
+/* Enhanced animations for mood themes */
+.mood-theme-transition {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Global Metallic Theme Application */
+body {
+  background: linear-gradient(135deg, var(--background-green) 0%, var(--surface-green) 100%);
+  color: #1f2937; /* Dark gray-800 for better readability */
+  min-height: 100vh;
+}
+
+/* Update primary colors to match logo */
+.bg-white {
+  background-color: var(--surface-green) !important;
+}
+
+.text-gray-900, .text-gray-800 {
+  color: #111827 !important; /* Very dark gray for high contrast */
+}
+
+.text-gray-600, .text-gray-500 {
+  color: #4b5563 !important; /* Medium gray for secondary text */
+}
+
+.bg-green-500, .bg-emerald-500, .bg-primary {
+  background-color: var(--primary-green) !important;
+}
+
+.border-green-500, .border-emerald-500 {
+  border-color: var(--primary-green) !important;
+}
+
+.text-green-600, .text-emerald-600 {
+  color: var(--primary-green) !important;
+}
+
+/* Apply metallic gradients to buttons and interactive elements */
+.btn-primary, button[type="submit"], .bg-gradient-to-r {
+  background: linear-gradient(135deg, var(--metallic-light) 0%, var(--primary-green) 50%, var(--dark-green) 100%) !important;
+  color: white !important;
+  border: none !important;
+}
+
+/* Ensure text is visible on light backgrounds */
+.bg-white, .bg-gray-50, .bg-gray-100 {
+  color: #111827 !important; /* Dark text on light backgrounds */
+}
+
+/* Ensure text is visible on cards and panels */
+.card, .card-content, .bg-white .text-sm, .bg-white .text-xs {
+  color: #1f2937 !important;
+}
+
+/* Fix specific text visibility issues */
+.text-emerald-100 {
+  color: #d1fae5 !important; /* Light emerald for dark backgrounds */
+}
+
+/* White text should only be on dark backgrounds */
+.text-white {
+  color: white !important;
+}
+
+/* Fix navigation and header text visibility */
+nav, header, .navbar {
+  color: #1f2937 !important;
+}
+
+nav a, header a, .navbar a {
+  color: #374151 !important;
+}
+
+/* Ensure form labels and input text are dark */
+label, .form-label, input, select, textarea {
+  color: #111827 !important;
+}
+
+/* Fix modal and dialog text */
+.modal-content, .dialog-content, [role="dialog"] {
+  color: #1f2937 !important;
+}
+
+.btn-primary:hover, button[type="submit"]:hover {
+  background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 50%, var(--metallic-dark) 100%) !important;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  /* Hide complex animations on mobile for performance */
+  .animate-bounce,
+  .animate-pulse,
+  .animate-spin {
+    animation: none !important;
+  }
+
+  /* Reduce padding and margins on mobile */
+  .fixed.bottom-4 {
+    bottom: 8px !important;
+  }
+
+  .fixed.left-4 {
+    left: 8px !important;
+  }
+
+  .fixed.right-4 {
+    right: 8px !important;
+  }
+
+  /* Smaller glass effects on mobile */
+  .backdrop-blur-lg {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  /* Hide decorative elements on mobile */
+  .glow-effect,
+  .pulse-on-hover {
+    box-shadow: none !important;
+    transform: none !important;
+  }
+
+  /* Optimize text sizes for mobile */
+  .text-xs { font-size: 0.7rem; }
+  .text-sm { font-size: 0.8rem; }
+}
+
+/* Mood-aware component styling */
+.mood-card {
+  background-color: var(--mood-surface);
+  border: 1px solid var(--mood-accent);
+  color: var(--mood-text);
+  transition: all 0.3s ease;
+}
+
+.mood-card:hover {
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  transform: translateY(-2px);
+}
+
+.mood-button {
+  background-color: var(--mood-primary);
+  color: var(--mood-surface);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.mood-button:hover {
+  background-color: var(--mood-secondary);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.mood-gradient {
+  background: linear-gradient(135deg, var(--mood-primary), var(--mood-accent));
+}
+
+/* Micro-interactions and Delightful Hover Effects */
+@layer utilities {
+  /* Smooth hover lift effect */
+  .hover-lift {
+    @apply transition-all duration-300 ease-in-out;
+  }
+  .hover-lift:hover {
+    @apply transform -translate-y-1 shadow-lg;
+  }
+
+  /* Gentle scale effect */
+  .hover-scale {
+    @apply transition-transform duration-200 ease-in-out;
+  }
+  .hover-scale:hover {
+    @apply transform scale-105;
+  }
+
+  /* Subtle glow effect */
+  .hover-glow {
+    @apply transition-all duration-300 ease-in-out;
+  }
+  .hover-glow:hover {
+    @apply shadow-xl;
+    box-shadow: 0 20px 25px -5px rgba(16, 185, 129, 0.1), 0 10px 10px -5px rgba(16, 185, 129, 0.04);
+  }
+
+  /* Button press effect */
+  .btn-press {
+    @apply transition-all duration-150 ease-in-out;
+  }
+  .btn-press:active {
+    @apply transform scale-95;
+  }
+
+  /* Ripple effect container */
+  .ripple {
+    @apply relative overflow-hidden;
+  }
+
+  /* Shimmer loading effect */
+  .shimmer {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  /* Floating animation */
+  .float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  /* Pulse glow effect */
+  .pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 5px rgba(16, 185, 129, 0.3); }
+    50% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.6); }
+  }
+
+  /* Smooth fade in */
+  .fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Border draw effect */
+  .border-draw {
+    @apply relative;
+  }
+  .border-draw::before {
+    content: '';
+    @apply absolute inset-0 border-2 border-transparent;
+    background: linear-gradient(90deg, transparent, transparent) padding-box,
+                linear-gradient(90deg, #10b981, #3b82f6) border-box;
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+  .border-draw:hover::before {
+    opacity: 1;
+  }
+
+  /* Magnetic hover effect */
+  .magnetic {
+    @apply transition-transform duration-300 ease-out;
+  }
+
+  /* Elastic bounce */
+  .bounce-elastic {
+    animation: bounceElastic 0.6s ease-out;
+  }
+
+  @keyframes bounceElastic {
+    0% { transform: scale(1); }
+    30% { transform: scale(1.25); }
+    40% { transform: scale(0.95); }
+    60% { transform: scale(1.05); }
+    80% { transform: scale(0.98); }
+    100% { transform: scale(1); }
+  }
+
+  /* Text reveal effect */
+  .text-reveal {
+    @apply relative overflow-hidden;
+  }
+  .text-reveal::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-primary to-blue-500;
+    transform: translateX(-100%);
+    transition: transform 0.6s ease-in-out;
+  }
+  .text-reveal:hover::before {
+    transform: translateX(100%);
+  }
+
+  /* Card flip effect */
+  .flip-card {
+    perspective: 1000px;
+  }
+  .flip-card-inner {
+    @apply relative w-full h-full transition-transform duration-700;
+    transform-style: preserve-3d;
+  }
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  .flip-card-front, .flip-card-back {
+    @apply absolute inset-0 backface-hidden;
+  }
+  .flip-card-back {
+    transform: rotateY(180deg);
+  }
+}
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(222, 84%, 4.9%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(222, 84%, 4.9%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(222, 84%, 4.9%);
+  --primary: hsl(160, 84%, 39%); /* EaseMyExpo green #10B981 */
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(210, 40%, 96%);
+  --secondary-foreground: hsl(222, 84%, 4.9%);
+  --muted: hsl(210, 40%, 96%);
+  --muted-foreground: hsl(215, 16%, 46%);
+  --accent: hsl(210, 40%, 96%);
+  --accent-foreground: hsl(222, 84%, 4.9%);
+  --destructive: hsl(0, 84%, 60%);
+  --destructive-foreground: hsl(0, 0%, 100%);
+  --border: hsl(214, 32%, 91%);
+  --input: hsl(214, 32%, 91%);
+  --ring: hsl(160, 84%, 39%);
+  --chart-1: hsl(160, 84%, 39%);
+  --chart-2: hsl(152, 100%, 65%);
+  --chart-3: hsl(291, 64%, 42%);
+  --chart-4: hsl(271, 81%, 56%);
+  --chart-5: hsl(341, 75%, 51%);
+  --font-sans: 'Bricolage Grotesque', 'Inter', system-ui, sans-serif;
+  --font-serif: Georgia, serif;
+  --font-mono: Menlo, monospace;
+  --radius: 0.75rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-white text-slate-900 min-h-screen;
+    font-family: var(--font-sans);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .card {
+    background: hsl(0, 0%, 100%);
+    border: 1px solid hsl(214, 32%, 91%);
+    border-radius: var(--radius);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  }
+
+  .card-hover {
+    transition: all 0.2s ease;
+  }
+
+  .card-hover:hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transform: translateY(-1px);
+  }
+
+  .primary-gradient {
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  }
+
+  .step-indicator {
+    @apply w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold transition-all duration-200;
+  }
+
+  /* Micro-interactions and hover effects */
+  .interactive-card {
+    @apply transition-all duration-300 ease-out cursor-pointer;
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  }
+
+  .interactive-card:hover {
+    @apply shadow-xl;
+    transform: perspective(1000px) rotateX(-2deg) rotateY(2deg) translateY(-4px);
+  }
+
+  .button-hover {
+    @apply transition-all duration-200 ease-out transform;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .button-hover:hover {
+    @apply scale-105 shadow-lg;
+  }
+
+  .button-hover:active {
+    @apply scale-95;
+  }
+
+  .button-hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s;
+  }
+
+  .button-hover:hover::before {
+    left: 100%;
+  }
+
+  .input-focus {
+    @apply transition-all duration-200 ease-out;
+  }
+
+  .input-focus:focus {
+    @apply ring-2 ring-emerald-500 ring-opacity-50 border-emerald-500 shadow-md;
+    transform: scale(1.02);
+  }
+
+  .card-bounce {
+    @apply transition-transform duration-150 ease-out;
+  }
+
+  .card-bounce:hover {
+    animation: gentle-bounce 0.6s ease-in-out;
+  }
+
+  .icon-spin {
+    @apply transition-transform duration-300 ease-out;
+  }
+
+  .icon-spin:hover {
+    transform: rotate(360deg);
+  }
+
+  .pulse-on-hover {
+    @apply transition-all duration-200;
+  }
+
+  .pulse-on-hover:hover {
+    animation: pulse-glow 1.5s ease-in-out infinite;
+  }
+
+  .slide-up {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .slide-up:hover {
+    transform: translateY(-8px);
+  }
+
+  .glow-effect {
+    @apply transition-all duration-300;
+    position: relative;
+  }
+
+  .glow-effect:hover {
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.4), 0 0 40px rgba(16, 185, 129, 0.2);
+  }
+
+  .ripple-effect {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+
+  .ripple-effect:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transition: width 0.6s, height 0.6s;
+    transform: translate(-50%, -50%);
+  }
+
+  .ripple-effect:hover:before {
+    width: 300px;
+    height: 300px;
+  }
+
+  @keyframes gentle-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 5px rgba(16, 185, 129, 0.5); }
+    50% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.8), 0 0 30px rgba(16, 185, 129, 0.6); }
+  }
+
+  @keyframes slide-in-right {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes slide-in-left {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-slide-in-right {
+    animation: slide-in-right 0.6s ease-out;
+  }
+
+  .animate-slide-in-left {
+    animation: slide-in-left 0.6s ease-out;
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.6s ease-out;
+  }
+
+  .step-active {
+    @apply bg-primary text-white;
+  }
+
+  .step-completed {
+    @apply bg-green-500 text-white;
+  }
+
+  .step-inactive {
+    @apply bg-gray-200 text-gray-500;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.5s ease-out;
+  }
+
+  /* Emoji styling for brand consistency */
+  .emoji-brand {
+    filter: hue-rotate(120deg) saturate(1.2) brightness(1.1);
+  }
+
+  /* Flag emoji styling */
+  .flag-india {
+    filter: hue-rotate(20deg) saturate(1.3) brightness(1.1);
+  }
+
+  .flag-us {
+    filter: hue-rotate(200deg) saturate(1.1) brightness(1.0);
+  }
+
+  /* Enhanced emoji contrast for dark theme */
+  .text-emerald-400 {
+    filter: drop-shadow(0 0 2px rgba(16, 185, 129, 0.3));
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 20px rgba(16, 185, 129, 0.3); }
+  to { box-shadow: 0 0 30px rgba(16, 185, 129, 0.6); }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile Responsive Optimizations */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  .card {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Mobile form improvements */
+  input, select, textarea {
+    font-size: 16px; /* Prevents zoom on iOS */
+    padding: 0.75rem;
+  }
+
+  /* Mobile button improvements */
+  button, .btn {
+    min-height: 44px; /* iOS touch target */
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+  }
+
+  /* Mobile text sizing */
+  h1 { font-size: 1.5rem; }
+  h2 { font-size: 1.25rem; }
+  h3 { font-size: 1.125rem; }
+
+  /* Mobile spacing */
+  .space-y-6 > * + * { margin-top: 1rem; }
+  .space-y-8 > * + * { margin-top: 1.5rem; }
+}
+
+/* Professional checkbox styling with working functionality */
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 12px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(16, 185, 129, 0.1);
+}
+
+.checkbox-container:hover {
+  border-color: rgba(16, 185, 129, 0.3);
+  background-color: rgba(16, 185, 129, 0.02);
+  transform: translateY(-1px);
+}
+
+.checkbox-container.selected {
+  background-color: rgba(16, 185, 129, 0.05);
+  border-color: #10B981;
+  box-shadow: 0 2px 8px 0 rgba(16, 185, 129, 0.15);
+}
+
+.checkbox-input {
+  width: 18px;
+  height: 18px;
+  margin-right: 12px;
+  accent-color: #10B981;
+  cursor: pointer;
+  border: 2px solid #10B981;
+  border-radius: 3px;
+}
+
+.checkbox-input:focus {
+  outline: 2px solid #10B981;
+  outline-offset: 2px;
+}
+
+/* Mobile enhancements */
+@media (max-width: 640px) {
+  .checkbox-container {
+    min-height: 56px;
+    padding: 16px;
+  }
+
+  .checkbox-input {
+    width: 22px;
+    height: 22px;
+    margin-right: 14px;
+  }
+
+  .checkbox-container span {
+    font-size: 16px;
+  }
+}
+
+/* Legacy checkbox support */
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #10B981;
+  cursor: pointer;
+}
+
+@media (max-width: 640px) {
+  input[type="checkbox"] {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+/* Touch-friendly interactions */
+@media (hover: none) and (pointer: coarse) {
+  .touch-friendly {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Pricing animation enhancements */
+@keyframes price-update {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-price-update {
+  animation: price-update 0.6s ease-in-out;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.4s ease-out;
+}
+
+/* Mobile floating panel enhancements */
+.floating-panel {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Touch-friendly buttons and mobile responsiveness */
+@media (max-width: 768px) {
+  button, [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+    border-radius: 0.5rem;
+  }
+
+  /* Better spacing for mobile */
+  .card {
+    padding: 1rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  /* Improved mobile form layouts */
+  .grid {
+    gap: 0.75rem !important;
+  }
+
+  /* Better text sizing for mobile */
+  h1 { font-size: 1.5rem !important; }
+  h2 { font-size: 1.25rem !important; }
+  h3 { font-size: 1.125rem !important; }
+
+  /* Responsive inputs */
+  input, select, textarea {
+    font-size: 16px !important; /* Prevents zoom on iOS */
+  }
+
+  /* Fixed bottom panel spacing - Enhanced for pricing panel */
+  .fixed.bottom-2 {
+    bottom: 0.5rem;
+    left: 0.5rem;
+    right: 0.5rem;
+    margin-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* Enhanced pricing panel styles - Works on both mobile and desktop */
+  .pricing-panel-mobile {
+    position: fixed !important;
+    bottom: 12px !important;
+    left: 12px !important;
+    right: 12px !important;
+    width: auto !important;
+    max-height: 25vh !important;
+    border-radius: 16px !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.98) 100%) !important;
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15), 0 10px 15px rgba(0, 0, 0, 0.08) !important;
+    margin-bottom: env(safe-area-inset-bottom, 12px) !important;
+    z-index: 10 !important;
+    pointer-events: auto !important;
+  }
+
+  /* Ensure main content has proper bottom padding to avoid overlap */
+  .main-content-mobile {
+    padding-bottom: calc(140px + env(safe-area-inset-bottom, 12px)) !important;
+    margin-bottom: 2rem !important;
+  }
+
+  /* Form container padding for all devices */
+  .lg\:col-span-3 {
+    margin-bottom: 120px !important;
+  }
+
+  /* Desktop pricing panel positioning */
+  @media (min-width: 1024px) {
+    .pricing-panel-mobile {
+      bottom: 24px !important;
+      left: 24px !important;
+      right: 24px !important;
+      max-width: 400px !important;
+      margin: 0 auto !important;
+    }
+
+    .lg\:col-span-3 {
+      margin-bottom: 120px !important; /* Keep padding on desktop too */
+    }
+  }
+
+  /* Fix navigation buttons positioning on mobile */
+  .mobile-nav-buttons {
+    position: relative !important;
+    z-index: 50 !important; /* Higher z-index to stay above pricing panel */
+    background: white !important;
+    padding: 16px !important;
+    margin: 20px -24px 2rem -24px !important;
+    border-top: 1px solid #e5e7eb !important;
+    border-radius: 0 !important;
+    box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+    padding-bottom: calc(16px + env(safe-area-inset-bottom, 12px)) !important;
+  }
+
+  /* Ensure buttons are always clickable on mobile */
+  .mobile-nav-buttons button {
+    position: relative !important;
+    z-index: 51 !important;
+    pointer-events: auto !important;
+    touch-action: manipulation !important;
+    min-height: 48px !important;
+  }
+
+  /* Container spacing */
+  .max-w-7xl {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+
+  /* Form field improvements */
+  .space-y-6 > * + * {
+    margin-top: 1rem !important;
+  }
+
+  .space-y-4 > * + * {
+    margin-top: 0.75rem !important;
+  }
+}
+
+/* Enhanced sticky positioning */
+.sticky-panel {
+  position: sticky;
+  top: 1rem;
+  max-height: calc(100vh - 2rem);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e0 transparent;
+}
+
+.sticky-panel::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sticky-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sticky-panel::-webkit-scrollbar-thumb {
+  background-color: #cbd5e0;
+  border-radius: 2px;
+}
+
+/* Ultra responsive mobile breakpoints */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 0.5rem !important;
+  }
+
+  .card {
+    padding: 0.75rem !important;
+    margin-bottom: 0.5rem !important;
+    border-radius: 0.75rem !important;
+  }
+
+  .grid {
+    gap: 0.5rem !important;
+  }
+
+  h1 { font-size: 1.25rem !important; }
+  h2 { font-size: 1.125rem !important; }
+  h3 { font-size: 1rem !important; }
+
+  /* Ultra compact spacing for small screens */
+  .space-y-6 > * + * {
+    margin-top: 0.75rem !important;
+  }
+
+  .space-y-4 > * + * {
+    margin-top: 0.5rem !important;
+  }
+
+  /* Better button sizing for thumbs */
+  button, [role="button"] {
+    min-height: 48px !important;
+    padding: 0.875rem 1rem !important;
+    font-size: 0.875rem !important;
+  }
+
+  /* Improved form field touch targets */
+  input, select, textarea {
+    min-height: 48px !important;
+    padding: 0.875rem !important;
+    border-radius: 0.5rem !important;
+  }
+
+  /* Enhanced mobile scrolling and safe areas */
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 1rem) !important;
+  }
+
+  /* Mobile panel enhancements */
+  .pricing-panel-mobile {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
+  .pricing-panel-mobile:active {
+    transform: scale(0.98) !important;
+  }
+}
+
+/* Webkit specific mobile improvements */
+@media (max-width: 480px) and (-webkit-min-device-pixel-ratio: 1) {
+  input, select, textarea {
+    -webkit-appearance: none !important;
+    -webkit-border-radius: 0.5rem !important;
+  }
+
+  button {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1) !important;
+  }
+}
+
+/* Mobile Navigation Buttons - Fixed positioning */
+.mobile-nav-buttons {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: white;
+  border-top: 1px solid #e5e7eb;
+  padding: 1rem;
+  margin: 0 -1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .mobile-nav-buttons {
+    position: static;
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Add left padding on desktop to account for sidebar */
+  .max-w-5xl {
+    padding-left: 320px !important; /* Account for 320px left sidebar */
+  }
+}
+
+/* Main content mobile spacing */
+@media (max-width: 1024px) {
+  .max-w-5xl {
+    padding-bottom: 200px; /* Space for mobile pricing panel */
+  }
+
+  /* Additional padding when pricing panel is shown */
+  .pricing-panel-active {
+    padding-bottom: 250px !important;
+  }
+}
+
+/* Ensure pricing panel is always visible */
+.mobile-pricing-panel {
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 50 !important;
+  background: white !important;
+  border-top: 1px solid #e5e7eb !important;
+  box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+  backdrop-filter: blur(8px) !important;
+}
+
+/* Fix step indicator card spacing */
+.step-card {
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(229, 231, 235, 0.8);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.step-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.75rem;
+}
+
+.step-card h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #059669;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.step-card p {
+  font-size: 0.875rem;
+  color: #6B7280;
+  margin: 0;
+  line-height: 1.4;
+  max-width: 280px;
+}
+
+/* Remove extra spacing from cards */
+.interactive-card {
+  margin-bottom: 0;
+}
+
+.interactive-card:not(:last-child) {
+  margin-bottom: 1.5rem;
+}
